@@ -1,14 +1,20 @@
 #include "function_pointers.h"
 
 /**
- * print_name - writes the character c to stdout
- * @name: String
- * @f: Pointer to function with char parameter and no return
+ * array_iterator - executes a function given as a parameter
+ * @array: array of type int
+ * @size: size of array
+ * @action: function with argument int and no return
  *
  * Return: Nothing
  */
-void print_name(char *name, void (*f)(char *))
+void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	if (f != 0)
-		f(name);
+	unsigned int i;
+
+	if (action != 0 && size >= 1 && array != 0)
+	{
+		for (i = 0; i < size; i++)
+			action(array[i]);
+	}
 }
